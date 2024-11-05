@@ -13,14 +13,15 @@ export function ArticleCard (props){
     
     return(<section className = "articleCard"> 
     {/* <Link to={`/articles/${article.article_id}`}> */}
-    <p>Title: {article.title}</p>
-    <p>Author: {article.author}</p>
-    <p> Topic: {article.topic}</p>
-    <p>Date Posted: {formatDate(dateString)}</p>
-    <p>Votes: {article.votes}</p>
-    <p>Article: {article.body}</p>
-    <p>Comments: {article.comment_count}</p>
-    <img src= {article.article_img_url}/>
+    <p className = "articleItem"><strong>Title: </strong> {article.title}</p>
+    <p className = "articleItem"><strong>Author: </strong> {article.author}</p>
+    <p className = "articleItem"><strong>Topic: </strong> {article.topic}</p>
+    {/* <p className = "articleItem"><strong>Date Posted:</strong> {formatDate(dateString)}</p>
+    <p className = "articleItem"><strong>Votes:</strong> {article.votes}</p>
+    <p><strong>Article:</strong>  {article.body}</p>
+    <p><strong>Comments:</strong>  {article.comment_count}</p> */}
+    <div className= "container"><img src= {article.article_img_url} id= "articleImage"/></div>
+    
    {/* </Link> */}
     </section>)
     }

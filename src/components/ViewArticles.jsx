@@ -34,7 +34,7 @@ export default function viewArticles(){
     const paginatedArticles = articles.slice(startIndex, endIndex);
 
 
-    return <>{paginatedArticles.map((article)=>{return<div key ={article.article_id}> <ArticleCard article= {article}/></div>})}<button onClick={() => setPage((currentPage) => currentPage - 1)} disabled={page === 0} > Previous Page </button> <button onClick={() => setPage((currentPage) => currentPage + 1)} disabled={PAGE_LENGTH * (page + 1) >= totalCount} > Next Page </button>
+    return <>{paginatedArticles.map((article)=>{return<div className= "articleList" key ={article.article_id}> <ArticleCard article= {article}/></div>})}<button onClick={() => setPage((currentPage) => currentPage - 1)} disabled={page === 0} > Previous Page </button> <button onClick={() => setPage((currentPage) => currentPage + 1)} disabled={PAGE_LENGTH * (page + 1) >= totalCount} > Next Page </button>
     </>
 }
 
