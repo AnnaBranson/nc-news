@@ -5,7 +5,7 @@ body{
 .articleCard{
     display:flex;
     flex-wrap:wrap;
-    flex-direction: row;
+    flex-direction: column;
     border: solid 3px black;
     border-radius: 20px;
     align-items: center;
@@ -14,14 +14,16 @@ body{
 
 .articleList{
     display: flex;
-    flex-direction: row
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding: 20px;
     margin: 30px;
+    flex-direction: row;
 }
 
 #articleImage{
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 150px;
     border-radius: 20px;
     margin: auto;
     float: right
@@ -30,8 +32,24 @@ body{
 .articleItem{
     display: flex;
     flex-wrap: wrap;
-    padding: 10px
+    padding: 10px;
+    width: 48%;
+    margin-bottom: 10px; 
+    box-sizing: border-box; 
 }
 .container{
     align-items: right;
 }
+
+#singleArticle{
+    display: flex;
+    flex-wrap: wrap;
+
+    
+}
+#voteButton{
+    justify-self: right;
+    
+    
+}
+
