@@ -25,5 +25,14 @@ const api = axios.create({
     })
   }
 
+  const getCommentsById = (id) => {
+    return api.get(`/articles/${id}/comments`)
+    .then(({data})=> {
+        return data.comments
+    })
+    .catch((err)=>{
+        return err
+    })
+  }
 
-  export {getArticles, getArticleById }
+  export {getArticles, getArticleById, getCommentsById }
