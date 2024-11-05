@@ -15,4 +15,15 @@ const api = axios.create({
     })
   }
 
-  export {getArticles}
+  const getArticleById = (id) =>{
+    return api.get(`/articles/${id}`)
+    .then(({data}) => {
+        return data.article
+    })
+    .catch((err)=>{
+        return err
+    })
+  }
+
+
+  export {getArticles, getArticleById }

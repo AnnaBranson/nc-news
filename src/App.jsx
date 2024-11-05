@@ -1,12 +1,12 @@
-//import { useState } from 'react'
 import './App.css'
 import Header from "./components/Header"
 import Home from "./components/Home"
-import ViewArticles from './components/viewArticles'
+import ViewArticles from './components/ViewArticles'
 import { Route, Routes } from 'react-router-dom'
+import SingleArticle from './components/SingleArticle'
 
 function App() {
-  //const [count, setCount] = useState(0)
+ 
 
   return (
     <>
@@ -14,6 +14,7 @@ function App() {
     <Routes>
     <Route path = "/" element={<Home/>}/>
     <Route path = "/articles" element = {<ViewArticles/>}/>
+    <Route path = "/articles/:article_id" element={<SingleArticle/>}/>
   </Routes>
     </>
   )
@@ -21,17 +22,3 @@ function App() {
 
 export default App
 
-
-{/* <UserContext.Provider value={{userObject,setUserObject}} >
-
-<Routes>
-<Route path='/' element={<Home />}/>
-<Route path='/buyItems' element={<BuyItems/>}/>
-<Route path='/sellItems' element={<SellItems/>} />
-<Route path='/profile' element={<Profile/>} />
-<Route path='/basket' element={<Basket/>} />
-<Route path='/login' element={<LogIn setUserObject = {setUserObject}/>}/>
-<Route path='/items/:item_id' element={<SingleItem/>}/>
-<Route path='/createProfile' element={<CreateProfile setUserLoginObject = {setUserObject}/>} />
-</Routes>
-</UserContext.Provider> */}

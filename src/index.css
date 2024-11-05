@@ -23,7 +23,7 @@ body{
 
 #articleImage{
     height: 100px;
-    width: 100px
+    width: 150px;
     border-radius: 20px;
     margin: auto;
     float: right
@@ -40,3 +40,16 @@ body{
 .container{
     align-items: right;
 }
+
+#singleArticle{
+    display: flex;
+    flex-wrap: wrap;
+
+    
+}
+#voteButton{
+    justify-self: right;
+    
+    
+}
+
