@@ -2,17 +2,18 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { getArticleById } from '../../api'
 import { getCommentsById } from '../../api'
-
+import { patchVotesByArticleId } from '../../api'
 
 
 export default function SingleArticle(){
     
     const {article_id} = useParams()
-    const [article, setArticle] = useState([])
+    const [article, setArticle] = useState({})
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [comments, setComments] = useState([])
     const [showComments, setShowComments] = useState(false)
+    const [votes, setVotes] = useState(0)
 
     useEffect(()=>{
         getArticleById(article_id)
@@ -41,13 +42,30 @@ export default function SingleArticle(){
         if (!showComments) {
            
             getCommentsById(article_id).then((fetchedComments) => {
-                setComments(fetchedComments || []);
+                setComments(fetchedComments);
                 setShowComments(true);
             });
         } else {
             setShowComments(false);
         }
     }
+    function patchVote(event) {
+        event.preventDefault();
+        const newVotes = votes +1
+        setVotes(newVotes)
+        patchVotesByArticleId(article_id)
+            .then((updatedArticle) => {
+                setVotes(updatedArticle.votes)
+                setArticle((prevArticle) => ({
+                    ...prevArticle,
+                    votes: prevArticle.votes + 1, 
+                }));
+            })
+            .catch((err) => {
+                setError(err); 
+            });
+    }
+    
     return (
         <div key={article.article_id}>
             <div id="singleArticle">
@@ -56,7 +74,7 @@ export default function SingleArticle(){
                 <p className="articleItem"><strong>Topic: </strong> {article.topic}</p>
                 <p className="articleItem"><strong>Article: </strong> {article.body}</p>
                 <img src={article.article_img_url} alt="Article image" className="articleImg" />
-                <p className="articleItem"><strong>Votes: </strong> {article.votes}</p>
+                <p className="articleItem"><strong>Votes: </strong> {article.votes}</p><button className="button" onClick={patchVote}>Vote!</button>
                 <p className="articleItem"><small>Posted on </small> {formatDate(dateString)}</p>
                 <p><strong>Comments:</strong> {article.comment_count}</p>
                 <button className="button" onClick={handleClick}>{showComments ? "Hide Comments" : "View Comments"}</button>
