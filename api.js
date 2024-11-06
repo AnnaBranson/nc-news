@@ -20,9 +20,6 @@ const api = axios.create({
     .then(({data}) => {
         return data.article
     })
-    .catch((err)=>{
-        return err
-    })
   }
 
   const getCommentsById = (id) => {
@@ -30,9 +27,15 @@ const api = axios.create({
     .then(({data})=> {
         return data.comments
     })
-    .catch((err)=>{
-        return err
+  }
+
+  const patchVotesByArticleId = (article_id) => {
+    return api.patch(`/articles/${article_id}`, {inc_vote: 1})
+    .then((response)=> {
+        console.log(response)
+        return response
     })
   }
 
-  export {getArticles, getArticleById, getCommentsById }
+  
+  export {getArticles, getArticleById, getCommentsById, patchVotesByArticleId }
