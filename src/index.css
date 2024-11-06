@@ -39,7 +39,7 @@ body{
     justify-self: right;
 }
 
-.comment{
+.individualComments{
     display:flex;
     flex-wrap:wrap;
     flex: 1 1 calc(33.333% - 20px); 

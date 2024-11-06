@@ -32,10 +32,22 @@ const api = axios.create({
   const patchVotesByArticleId = (article_id) => {
     return api.patch(`/articles/${article_id}`, {inc_vote: 1})
     .then((response)=> {
-        console.log(response)
         return response
     })
   }
 
+  const postCommentByArticleId = (article_id, author, body) => {
+    return api.post(`/articles/${article_id}/comments`, {author, body} )
+    .then((response) =>{
+      
+      return response
+    })
+  }
   
-  export {getArticles, getArticleById, getCommentsById, patchVotesByArticleId }
+  const getUsers = () => {
+    return api.get (`/users`)
+    .then((response)=>{
+      return response
+    })
+  }
+  export { getArticles, getArticleById, getCommentsById, patchVotesByArticleId, postCommentByArticleId, getUsers }

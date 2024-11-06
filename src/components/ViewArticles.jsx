@@ -1,10 +1,10 @@
-import {getArticles} from "../../api"
+import { getArticles } from "../../api"
 import {useState, useEffect} from "react"
 import { ArticleCard } from "./ArticleCard"
 
 const PAGE_LENGTH = 10
 
-export default function viewArticles(){
+export default function ViewArticles(){
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState(null)
@@ -16,7 +16,6 @@ export default function viewArticles(){
     useEffect(()=>{
         getArticles()
         .then((articles)=> {setArticles(articles)
-            setArticles(articles)
             setTotalCount(articles.length)
             setLoading(false)
         })
