@@ -50,4 +50,9 @@ const api = axios.create({
       return response
     })
   }
-  export { getArticles, getArticleById, getCommentsById, patchVotesByArticleId, postCommentByArticleId, getUsers }
+
+  const deleteCommentByCommentId = (comment_id) => {
+    return api.delete(`/comments/${comment_id}`)
+    
+  }
+  export { getArticles, getArticleById, getCommentsById, patchVotesByArticleId, postCommentByArticleId, getUsers, deleteCommentByCommentId  }

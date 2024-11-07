@@ -1,10 +1,13 @@
-import {getCommentsById} from "../../api"
-import {useState, useEffect} from "react"
+import { getCommentsById } from "../../api"
+import { useState, useEffect, useContext } from "react"
 import  formatDate  from "../utils/formatDate"
+import DeleteComment from "./DeleteComment"
+import UserContext from "../contexts/UserContext"
 
 
 
 export default function ViewComments( {article_id}){
+    const { user } = useContext(UserContext)
     const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState(null)
@@ -25,8 +28,11 @@ export default function ViewComments( {article_id}){
     if (error) { 
         return <div>Error: {error.message}</div>; }
     
-
-
+        function handleDelete(commentId) {
+          
+          setComments((prevComments) => prevComments.filter((c) => c.comment_id !== commentId));
+        }
+      
 
         return (
             <section className="commentList">
@@ -36,6 +42,7 @@ export default function ViewComments( {article_id}){
                   <p>{comment.body}</p>
                   <p><strong>Votes:</strong> {comment.votes}</p>
                   <p><small>Posted on {formatDate(comment.created_at)}</small></p>
+                  {comment.author === user.username && <DeleteComment comment_id={comment.comment_id} onDelete={handleDelete} />}
                 </section>
               ))}
             </section>
