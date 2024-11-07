@@ -1,4 +1,4 @@
-//import news from "../assets/news.avif"
+
 
 export default function Home(){
 

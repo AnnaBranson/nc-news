@@ -8,6 +8,7 @@ export default function LoggedInUser( { setUser } ) {
     useEffect(()=>{
         getUsers()
         .then((response)=>{
+            
             setUsers(response.data.users)
         })
     }, [])
