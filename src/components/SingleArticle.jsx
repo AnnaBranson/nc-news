@@ -58,7 +58,12 @@ export default function SingleArticle(){
     
     function handleAddComment({ author, body }) {
         const newComment = { author, body, create_at: new Date().toISOString()}
-        
+
+        setArticle((prevArticle) => ({
+            ...prevArticle,
+            comment_count: Number(prevArticle.comment_count) + 1, 
+            
+        }));
         
         postCommentByArticleId(article_id, author, body)
           .then ((response) => {

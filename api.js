@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://be-nc-news-yl9m.onrender.com/api/",
+    baseURL: "https://be-nc-news-yl9m.onrender.com/api",
   });
 
   const getArticles = () => {
@@ -55,4 +55,20 @@ const api = axios.create({
     return api.delete(`/comments/${comment_id}`)
     
   }
-  export { getArticles, getArticleById, getCommentsById, patchVotesByArticleId, postCommentByArticleId, getUsers, deleteCommentByCommentId  }
+
+  const getTopics = () => {
+    return api.get('/topics')
+    .then((response)=>{
+      return response
+    })
+  }
+
+  const getArticlesByTopic = (topic_slug) => {
+    const url = `/articles?sort_by=topic&topic=${topic_slug}`;
+    console.log('API Request URL:', url);  // Log the URL to en
+    return api.get(`/articles?sort_by=topic&topic=${topic_slug}`)
+    .then((response)=>{
+      return response.data.articles
+    })
+  }
+  export { getArticles, getArticleById, getCommentsById, patchVotesByArticleId, postCommentByArticleId, getUsers, deleteCommentByCommentId, getTopics, getArticlesByTopic  }
