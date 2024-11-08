@@ -10,7 +10,6 @@ export default function ViewTopics(){
     useEffect(()=>{
         getTopics()
         .then((data) => {
-            
             setTopics(data.data.topics)
         })
     }, [])

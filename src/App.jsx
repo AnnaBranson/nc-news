@@ -9,6 +9,7 @@ import { useState } from "react"
 import  ViewTopics  from "./components/ViewTopics"
 import  ViewArticlesByTopic  from "./components/ViewArticlesByTopic"
 
+
 function App() {
  const [user, setUser] = useState([])
 
@@ -21,7 +22,7 @@ function App() {
     <Route path = "/articles" element = {<ViewArticles/>}/>
     <Route path = "/articles/:article_id" element={<SingleArticle/>}/>
     <Route path = "/topics" element={<ViewTopics/>}/>
-    <Route path= "/articles/:topic_slug" element={<ViewArticlesByTopic />} />
+    <Route path= "/topic/:topic_slug" element={<ViewArticlesByTopic  />} />
   </Routes>
   </UserContext.Provider>
     </>

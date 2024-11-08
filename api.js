@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://be-nc-news-yl9m.onrender.com/api",
+    baseURL: "https://be-nc-news-yl9m.onrender.com/api/",
   });
 
   const getArticles = () => {
@@ -64,9 +64,7 @@ const api = axios.create({
   }
 
   const getArticlesByTopic = (topic_slug) => {
-    const url = `/articles?sort_by=topic&topic=${topic_slug}`;
-    console.log('API Request URL:', url);  // Log the URL to en
-    return api.get(`/articles?sort_by=topic&topic=${topic_slug}`)
+    return api.get(`articles?sort_by=topic&topic=coding`)
     .then((response)=>{
       return response.data.articles
     })
