@@ -55,4 +55,18 @@ const api = axios.create({
     return api.delete(`/comments/${comment_id}`)
     
   }
-  export { getArticles, getArticleById, getCommentsById, patchVotesByArticleId, postCommentByArticleId, getUsers, deleteCommentByCommentId  }
+
+  const getTopics = () => {
+    return api.get('/topics')
+    .then((response)=>{
+      return response
+    })
+  }
+
+  const getArticlesByTopic = (topic_slug) => {
+    return api.get(`articles?sort_by=topic&topic=coding`)
+    .then((response)=>{
+      return response.data.articles
+    })
+  }
+  export { getArticles, getArticleById, getCommentsById, patchVotesByArticleId, postCommentByArticleId, getUsers, deleteCommentByCommentId, getTopics, getArticlesByTopic  }
